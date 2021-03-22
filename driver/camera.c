@@ -879,27 +879,27 @@ static void IRAM_ATTR dma_filter_rgb888(const dma_elem_t* src, lldesc_t* dma_des
     for (size_t i = 0; i < end; ++i) {
         hb = src[0].sample1;
         lb = src[0].sample2;
-        dst[0] = (lb & 0x1F) << 3;
+        dst[2] = (lb & 0x1F) << 3;
         dst[1] = (hb & 0x07) << 5 | (lb & 0xE0) >> 3;
-        dst[2] = hb & 0xF8;
+        dst[0] = hb & 0xF8;
 
         hb = src[1].sample1;
         lb = src[1].sample2;
-        dst[3] = (lb & 0x1F) << 3;
+        dst[5] = (lb & 0x1F) << 3;
         dst[4] = (hb & 0x07) << 5 | (lb & 0xE0) >> 3;
-        dst[5] = hb & 0xF8;
+        dst[3] = hb & 0xF8;
 
         hb = src[2].sample1;
         lb = src[2].sample2;
-        dst[6] = (lb & 0x1F) << 3;
+        dst[8] = (lb & 0x1F) << 3;
         dst[7] = (hb & 0x07) << 5 | (lb & 0xE0) >> 3;
-        dst[8] = hb & 0xF8;
+        dst[6] = hb & 0xF8;
 
         hb = src[3].sample1;
         lb = src[3].sample2;
-        dst[9] = (lb & 0x1F) << 3;
+        dst[11] = (lb & 0x1F) << 3;
         dst[10] = (hb & 0x07) << 5 | (lb & 0xE0) >> 3;
-        dst[11] = hb & 0xF8;
+        dst[9] = hb & 0xF8;
         src += 4;
         dst += 12;
     }
@@ -912,27 +912,27 @@ static void IRAM_ATTR dma_filter_rgb888_highspeed(const dma_elem_t* src, lldesc_
     for (size_t i = 0; i < end; ++i) {
         hb = src[0].sample1;
         lb = src[1].sample1;
-        dst[0] = (lb & 0x1F) << 3;
+        dst[2] = (lb & 0x1F) << 3;
         dst[1] = (hb & 0x07) << 5 | (lb & 0xE0) >> 3;
-        dst[2] = hb & 0xF8;
+        dst[0] = hb & 0xF8;
 
         hb = src[2].sample1;
         lb = src[3].sample1;
-        dst[3] = (lb & 0x1F) << 3;
+        dst[5] = (lb & 0x1F) << 3;
         dst[4] = (hb & 0x07) << 5 | (lb & 0xE0) >> 3;
-        dst[5] = hb & 0xF8;
+        dst[3] = hb & 0xF8;
 
         hb = src[4].sample1;
         lb = src[5].sample1;
-        dst[6] = (lb & 0x1F) << 3;
+        dst[8] = (lb & 0x1F) << 3;
         dst[7] = (hb & 0x07) << 5 | (lb & 0xE0) >> 3;
-        dst[8] = hb & 0xF8;
+        dst[6] = hb & 0xF8;
 
         hb = src[6].sample1;
         lb = src[7].sample1;
-        dst[9] = (lb & 0x1F) << 3;
+        dst[11] = (lb & 0x1F) << 3;
         dst[10] = (hb & 0x07) << 5 | (lb & 0xE0) >> 3;
-        dst[11] = hb & 0xF8;
+        dst[9] = hb & 0xF8;
 
         src += 8;
         dst += 12;
@@ -940,15 +940,15 @@ static void IRAM_ATTR dma_filter_rgb888_highspeed(const dma_elem_t* src, lldesc_
     if ((dma_desc->length & 0x7) != 0) {
         hb = src[0].sample1;
         lb = src[1].sample1;
-        dst[0] = (lb & 0x1F) << 3;
+        dst[2] = (lb & 0x1F) << 3;
         dst[1] = (hb & 0x07) << 5 | (lb & 0xE0) >> 3;
-        dst[2] = hb & 0xF8;
+        dst[0] = hb & 0xF8;
 
         hb = src[2].sample1;
         lb = src[2].sample2;
-        dst[3] = (lb & 0x1F) << 3;
+        dst[5] = (lb & 0x1F) << 3;
         dst[4] = (hb & 0x07) << 5 | (lb & 0xE0) >> 3;
-        dst[5] = hb & 0xF8;
+        dst[3] = hb & 0xF8;
     }
 }
 
